@@ -23,19 +23,48 @@ export default function SocialMedia() {
     >
       <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'rgba(128,0,0,0.25)' }} />
 
-      <div className="max-w-6xl mx-auto px-6">
+      {/* Faint maroon glow — mirrors Booking */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 60%, rgba(74,0,0,0.18) 0%, transparent 70%)' }}
+      />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Label */}
         <motion.p
-          className="font-mono text-xs tracking-[0.3em] uppercase mb-12"
+          className="font-mono text-xs tracking-[0.3em] uppercase mb-8"
           style={{ color: '#800000' }}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
         >
-          Follow
+          Connect
         </motion.p>
 
-        {/* Minimal platform list */}
-        <div className="flex flex-col divide-y" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+        {/* Headline — same style as Booking */}
+        <motion.h2
+          className="font-display italic font-bold text-white leading-none mb-6"
+          style={{ fontSize: 'clamp(2.8rem, 8vw, 6rem)' }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.8 }}
+        >
+          Follow
+          <br />
+          <span style={{ color: '#b22222' }}>nicole.</span>
+        </motion.h2>
+
+        <motion.p
+          className="text-sm leading-relaxed mb-14 max-w-md"
+          style={{ color: 'rgba(255,255,255,0.4)' }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.25 }}
+        >
+          Stream the music and stay up to date across all platforms.
+        </motion.p>
+
+        {/* Platform rows — same card style as Booking contact rows */}
+        <div className="flex flex-col gap-4 max-w-lg">
           {platforms.map((p, i) => {
             const Icon = p.icon
             return (
@@ -44,27 +73,36 @@ export default function SocialMedia() {
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between py-5 transition-all duration-200"
-                initial={{ opacity: 0, x: -16 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="group flex items-center gap-5 py-5 px-6 rounded-2xl transition-all duration-200"
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(128,0,0,0.2)',
+                }}
+                initial={{ opacity: 0, y: 12 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.35 + i * 0.08, duration: 0.6 }}
+                whileHover={{
+                  borderColor: 'rgba(178,34,34,0.5)',
+                  backgroundColor: 'rgba(128,0,0,0.07)',
+                  y: -2,
+                }}
+                whileTap={{ scale: 0.98 }}
                 aria-label={`${p.name} — ${p.handle}`}
               >
-                <div className="flex items-center gap-5">
-                  <div
-                    className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:bg-maroon-dark"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
-                  >
-                    <Icon className="w-4 h-4" style={{ color: 'rgba(255,255,255,0.45)' }} />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium text-sm group-hover:text-white transition-colors">{p.name}</p>
-                    <p className="font-mono text-xs mt-0.5" style={{ color: 'rgba(128,0,0,0.8)' }}>{p.handle}</p>
-                  </div>
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'rgba(128,0,0,0.25)' }}
+                >
+                  <Icon className="w-4 h-4" style={{ color: '#b22222' }} />
                 </div>
-
+                <div className="flex-1 min-w-0">
+                  <p className="font-mono text-xs uppercase tracking-widest mb-0.5" style={{ color: 'rgba(128,0,0,0.7)' }}>
+                    {p.name}
+                  </p>
+                  <p className="text-white text-sm font-medium truncate">{p.handle}</p>
+                </div>
                 <span
-                  className="font-mono text-xs tracking-widest uppercase transition-all duration-200 group-hover:text-white group-hover:translate-x-1"
+                  className="font-mono text-xs tracking-widest uppercase transition-all duration-200 group-hover:text-white group-hover:translate-x-1 flex-shrink-0"
                   style={{ color: 'rgba(255,255,255,0.2)' }}
                 >
                   Follow →
@@ -74,28 +112,51 @@ export default function SocialMedia() {
           })}
         </div>
 
-        {/* Fan community — single quiet line */}
+        {/* Fan community row — same quiet style */}
         <motion.div
-          className="mt-10 pt-8 flex items-center justify-between"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.5 }}
+          className="mt-4 max-w-lg"
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.75, duration: 0.6 }}
         >
-          <div>
-            <p className="text-xs font-mono tracking-widest uppercase mb-1" style={{ color: 'rgba(128,0,0,0.7)' }}>
-              Fan Community
-            </p>
-            <p className="text-white/50 text-sm">The nicolets</p>
-          </div>
           <a
             href="https://www.instagram.com/nicolets.official/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-xs tracking-widest uppercase transition-colors duration-200 hover:text-white"
-            style={{ color: 'rgba(255,255,255,0.25)' }}
+            className="group flex items-center gap-5 py-5 px-6 rounded-2xl transition-all duration-200"
+            style={{
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(128,0,0,0.12)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'rgba(178,34,34,0.35)'
+              e.currentTarget.style.backgroundColor = 'rgba(128,0,0,0.05)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'rgba(128,0,0,0.12)'
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)'
+            }}
           >
-            @nicolets.official →
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: 'rgba(128,0,0,0.15)' }}
+            >
+              <Instagram className="w-4 h-4" style={{ color: 'rgba(178,34,34,0.6)' }} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-mono text-xs uppercase tracking-widest mb-0.5" style={{ color: 'rgba(128,0,0,0.5)' }}>
+                Fan Community
+              </p>
+              <p className="text-sm font-medium truncate" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                @nicolets.official
+              </p>
+            </div>
+            <span
+              className="font-mono text-xs tracking-widest uppercase flex-shrink-0 transition-all duration-200 group-hover:text-white"
+              style={{ color: 'rgba(255,255,255,0.15)' }}
+            >
+              Follow →
+            </span>
           </a>
         </motion.div>
       </div>
