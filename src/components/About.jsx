@@ -9,7 +9,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-28 overflow-hidden"
+      className="relative py-20 pb-10 overflow-hidden"
       style={{ background: '#000' }}
     >
       {/* Faint maroon line top */}

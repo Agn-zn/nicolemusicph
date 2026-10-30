@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import FeaturedTrack from './components/FeaturedTrack'
 import SocialMedia from './components/SocialMedia'
 import Booking from './components/Booking'
 import Footer from './components/Footer'
@@ -23,6 +24,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <FeaturedTrack />
         <SocialMedia />
         <Booking />
       </main>
