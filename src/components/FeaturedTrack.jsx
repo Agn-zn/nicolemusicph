@@ -57,41 +57,18 @@ export default function FeaturedTrack() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.8, ease: 'easeOut' }}
           >
-            {/* Cover art — Spotify CDN thumbnail for Panaginip */}
+            {/* Cover art */}
             <div className="relative mb-8 inline-block">
               <div
                 className="w-52 h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden"
-                style={{ border: '1px solid rgba(128,0,0,0.3)' }}
+                style={{ background: '#0d0000', border: '1px solid rgba(128,0,0,0.3)' }}
               >
                 <img
-                  src={`https://i.scdn.co/image/ab67616d0000b273${
-                    // Spotify cover art hash for Panaginip single
-                    'c0f30f649e8b3c9a9e88efcb'
-                  }`}
+                  src="https://i.scdn.co/image/ab6761610000e5eb8ae7f2aaa9817a704a87ea36"
                   alt="Panaginip — nicole"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // fallback: dark placeholder with title
-                    e.currentTarget.style.display = 'none'
-                    e.currentTarget.nextSibling.style.display = 'flex'
-                  }}
+                  className="w-full h-full object-cover object-top"
+                  style={{ filter: 'brightness(0.85)' }}
                 />
-                {/* Fallback placeholder */}
-                <div
-                  className="absolute inset-0 flex-col items-center justify-center hidden"
-                  style={{ background: '#0d0000', display: 'none' }}
-                  aria-hidden="true"
-                >
-                  <p
-                    className="font-display italic font-bold text-3xl"
-                    style={{ color: '#800000' }}
-                  >
-                    panaginip
-                  </p>
-                  <p className="font-mono text-xs mt-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
-                    nicole
-                  </p>
-                </div>
               </div>
 
               {/* Maroon glow under cover */}
