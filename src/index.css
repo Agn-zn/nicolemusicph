@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(128, 0, 0, 0.4);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar-thumb { background: #800000; border-radius: 99px; }
+}
+
+@layer utilities {
+  /* Maroon accent gradient text */
+  .text-maroon-grad {
+    background: linear-gradient(135deg, #b22222 0%, #ff4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Subtle glass panel — dark tinted */
+  .panel {
+    background: rgba(10, 0, 0, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(128, 0, 0, 0.18);
+  }
+
+  /* Maroon CTA button */
+  .btn-maroon {
+    background: #800000;
+    color: #fff;
+    transition: background 0.2s;
+  }
+  .btn-maroon:hover { background: #b22222; }
+
+  /* Ghost border button */
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(178, 34, 34, 0.5);
+    color: rgba(255,255,255,0.7);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover {
+    border-color: #b22222;
+    color: #fff;
+    background: rgba(128,0,0,0.12);
+  }
+}
