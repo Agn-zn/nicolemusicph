@@ -114,14 +114,7 @@ export default function Hero() {
             Listen on Spotify
           </motion.a>
 
-          <motion.button
-            onClick={() => go('#booking')}
-            className="btn-ghost px-6 py-3 rounded-full font-semibold text-sm"
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Book nicole
-          </motion.button>
+
         </motion.div>
 
         {/* Social icons */}
